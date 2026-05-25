@@ -23,3 +23,11 @@ export const CreateBookingSchema = z.object({
   guestCount: z.number().int().min(1).max(50),
   specialRequests: z.string().max(1000).optional(),
 });
+
+export const ListingSearchSchema = z.object({
+  q: z.string().trim().max(120).optional(),
+  category: z.string().trim().max(80).optional(),
+  location: z.string().trim().max(120).optional(),
+  minPrice: z.coerce.number().min(0).optional(),
+  maxPrice: z.coerce.number().min(0).optional(),
+});
