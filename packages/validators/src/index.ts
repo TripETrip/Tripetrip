@@ -9,6 +9,13 @@ export const RegisterProviderSchema = z.object({
   phone: z.string().min(8).max(20),
 });
 
+export const RegisterTravelerSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(10, 'Password must be at least 10 characters'),
+  fullName: z.string().min(2).max(120),
+  phone: z.string().min(8).max(20).optional(),
+});
+
 export const CreateBookingSchema = z.object({
   listingId: z.string().uuid(),
   startDate: z.string().datetime(),
