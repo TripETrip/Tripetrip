@@ -9,6 +9,7 @@ export const ApiRoutes = {
   inventory: '/inventory',
   pricing: '/pricing',
   notifications: '/notifications',
+  ai: '/ai',
   admin: '/admin',
   audit: '/audit',
 } as const;

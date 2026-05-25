@@ -52,3 +52,17 @@ export const ReleaseSettlementSchema = z.object({
   checkInValidated: z.boolean(),
   vendorWalletId: z.string().min(3).max(160),
 });
+
+export const GenerateItinerarySchema = z
+  .object({
+    destination: z.string().trim().min(2).max(120),
+    startDate: z.string().datetime(),
+    endDate: z.string().datetime(),
+    travelerCount: z.number().int().min(1, 'Number must be greater than or equal to 1').max(50),
+    budget: z.number().int().min(1000).optional(),
+    interests: z.array(z.string().trim().min(2).max(80)).min(1).max(12),
+  })
+  .refine((value) => Date.parse(value.endDate) > Date.parse(value.startDate), {
+    message: 'End date must be after start date',
+    path: ['endDate'],
+  });
