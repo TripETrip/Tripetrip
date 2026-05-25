@@ -66,3 +66,66 @@ export const GenerateItinerarySchema = z
     message: 'End date must be after start date',
     path: ['endDate'],
   });
+
+export const OnboardVendorSchema = z.object({
+  organizationName: z.string().trim().min(2).max(160),
+  ownerEmail: z.string().email(),
+  businessType: z.string().trim().min(2).max(80),
+  region: z.string().trim().min(2).max(120),
+});
+
+export const SetAvailabilitySchema = z.object({
+  listingId: z.string().trim().min(3).max(120),
+  date: z.string().date(),
+  availableUnits: z.number().int().min(0).max(1000),
+  channel: z.string().trim().min(2).max(80),
+});
+
+export const PricingSignalSchema = z.object({
+  listingId: z.string().trim().min(3).max(120),
+  baseRate: z.number().int().min(100),
+  occupancyPercent: z.number().min(0).max(100),
+  demandSignal: z.enum(['low', 'normal', 'high', 'festival', 'sold_out_nearby']),
+});
+
+export const AssignTaskSchema = z.object({
+  organizationId: z.string().trim().min(3).max(120),
+  title: z.string().trim().min(2).max(160),
+  assigneeRole: z.string().trim().min(2).max(80),
+});
+
+export const AdventureSlotSchema = z.object({
+  trekName: z.string().trim().min(2).max(160),
+  capacity: z.number().int().min(1).max(100),
+  guideId: z.string().trim().min(3).max(120),
+  requiresWaiver: z.boolean(),
+});
+
+export const RideDispatchSchema = z.object({
+  pickup: z.string().trim().min(2).max(160),
+  drop: z.string().trim().min(2).max(160),
+  certifiedOnly: z.boolean().default(true),
+});
+
+export const TrustSafetyEvaluationSchema = z.object({
+  verifiedDocuments: z.number().int().min(0).max(20),
+  incidentCount: z.number().int().min(0).max(100),
+  womenSafeCertified: z.boolean().default(false),
+});
+
+export const CreateNotificationSchema = z.object({
+  userId: z.string().trim().min(3).max(120),
+  template: z.string().trim().min(2).max(120),
+  channels: z.array(z.enum(['whatsapp', 'email', 'sms', 'push', 'in_app'])).min(1).max(5),
+});
+
+export const CaptureLeadSchema = z.object({
+  travelerPhone: z.string().trim().min(8).max(20),
+  source: z.string().trim().min(2).max(80),
+  interest: z.string().trim().min(2).max(200),
+});
+
+export const WhatsappIntentSchema = z.object({
+  from: z.string().trim().min(8).max(20),
+  text: z.string().trim().min(2).max(1000),
+});

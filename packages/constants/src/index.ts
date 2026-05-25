@@ -39,6 +39,12 @@ export const EventTopics = {
   payment: 'payment.events',
   inventory: 'inventory.events',
   pricing: 'pricing.events',
+  crm: 'crm.events',
+  operations: 'operations.events',
+  ai: 'ai.events',
+  community: 'community.events',
+  trustSafety: 'trust_safety.events',
+  transport: 'transport.events',
   notification: 'notification.events',
   audit: 'audit.events',
 } as const;
