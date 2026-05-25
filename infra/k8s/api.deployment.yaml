@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tripetrip-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tripetrip-api
+  template:
+    metadata:
+      labels:
+        app: tripetrip-api
+    spec:
+      containers:
+        - name: api
+          image: tripetrip/api:latest
+          ports:
+            - containerPort: 3001

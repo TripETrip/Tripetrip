@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tripetrip-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tripetrip-web
+  template:
+    metadata:
+      labels:
+        app: tripetrip-web
+    spec:
+      containers:
+        - name: web
+          image: tripetrip/web:latest
+          ports:
+            - containerPort: 3000
