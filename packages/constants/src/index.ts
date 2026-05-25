@@ -72,3 +72,38 @@ export const BookingEventTypes = {
   settled: 'booking.settled',
   completed: 'booking.completed',
 } as const;
+
+export const PaymentProviders = {
+  razorpay: 'razorpay',
+  stripe: 'stripe',
+  upi: 'upi',
+  wallet: 'wallet',
+} as const;
+
+export const PaymentStatuses = {
+  orderCreated: 'order_created',
+  escrowed: 'escrowed',
+  settlementPending: 'settlement_pending',
+  settled: 'settled',
+  refundPending: 'refund_pending',
+  refunded: 'refunded',
+  failed: 'failed',
+} as const;
+
+export const PaymentEventTypes = {
+  orderCreated: 'payment.order_created',
+  capturedToEscrow: 'payment.captured_to_escrow',
+  settlementReleased: 'payment.settlement_released',
+  refundPending: 'payment.refund_pending',
+  refunded: 'payment.refunded',
+  failed: 'payment.failed',
+} as const;
+
+export const LedgerEntryTypes = {
+  travelerDebit: 'traveler_debit',
+  escrowCredit: 'escrow_credit',
+  escrowDebit: 'escrow_debit',
+  vendorWalletCredit: 'vendor_wallet_credit',
+  refundDebit: 'refund_debit',
+  travelerRefundCredit: 'traveler_refund_credit',
+} as const;

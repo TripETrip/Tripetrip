@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+const CurrencySchema = z.string().length(3).transform((value) => value.toUpperCase());
+
 export const RegisterProviderSchema = z.object({
   email: z.string().email(),
   password: z.string().min(10),
@@ -30,4 +32,23 @@ export const ListingSearchSchema = z.object({
   location: z.string().trim().max(120).optional(),
   minPrice: z.coerce.number().min(0).optional(),
   maxPrice: z.coerce.number().min(0).optional(),
+});
+
+export const CreatePaymentOrderSchema = z.object({
+  bookingId: z.string().uuid(),
+  travelerId: z.string().uuid(),
+  providerId: z.string().uuid(),
+  amount: z.number().int().min(100, 'Amount must be at least 100 minor units'),
+  currency: CurrencySchema.default('INR'),
+  provider: z.enum(['razorpay', 'stripe', 'upi', 'wallet']),
+});
+
+export const CapturePaymentSchema = z.object({
+  gatewayPaymentId: z.string().min(3).max(160),
+  gatewaySignature: z.string().min(3).max(500),
+});
+
+export const ReleaseSettlementSchema = z.object({
+  checkInValidated: z.boolean(),
+  vendorWalletId: z.string().min(3).max(160),
 });
