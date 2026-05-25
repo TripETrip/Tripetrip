@@ -1,0 +1,14 @@
+{
+  "name": "Tripetrip",
+  "description": "A commission-free travel marketplace connecting travelers directly with local service providers. Featuring AI-powered trip planning and business insights.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "AI-powered flight and hotel recommendations",
+    "Direct vendor-traveler booking system",
+    "Escrow payment processing",
+    "PWA mobile support",
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
