@@ -20,7 +20,7 @@ export const CreateBookingSchema = z.object({
   listingId: z.string().uuid(),
   startDate: z.string().datetime(),
   endDate: z.string().datetime().optional(),
-  guestCount: z.number().int().min(1).max(50),
+  guestCount: z.number().int().min(1, 'Number must be greater than or equal to 1').max(50),
   specialRequests: z.string().max(1000).optional(),
 });
 

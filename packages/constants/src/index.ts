@@ -42,3 +42,33 @@ export const EventTopics = {
   notification: 'notification.events',
   audit: 'audit.events',
 } as const;
+
+export const BookingStatuses = {
+  draft: 'draft',
+  inventoryLocked: 'inventory_locked',
+  pendingPayment: 'pending_payment',
+  escrowed: 'escrowed',
+  confirmed: 'confirmed',
+  checkedIn: 'checked_in',
+  settlementPending: 'settlement_pending',
+  settled: 'settled',
+  completed: 'completed',
+  abandoned: 'abandoned',
+  expired: 'expired',
+  failed: 'failed',
+  cancellationRequested: 'cancellation_requested',
+  refundPending: 'refund_pending',
+  refunded: 'refunded',
+} as const;
+
+export const BookingEventTypes = {
+  created: 'booking.created',
+  inventoryLocked: 'inventory.locked',
+  pendingPayment: 'booking.pending_payment',
+  paymentEscrowed: 'booking.payment_escrowed',
+  confirmed: 'booking.confirmed',
+  checkedIn: 'booking.checked_in',
+  settlementPending: 'booking.settlement_pending',
+  settled: 'booking.settled',
+  completed: 'booking.completed',
+} as const;
