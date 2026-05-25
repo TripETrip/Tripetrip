@@ -4,6 +4,8 @@ dist/
 .next/
 apps/web/.next/
 coverage/
+test-results/
+playwright-report/
 .DS_Store
 *.log
 .env*

@@ -1,20 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# TripETrip
 
-# Run and deploy your AI Studio app
+TripETrip is an enterprise Travel Marketplace + Travel Operating System monorepo.
 
-This contains everything you need to run your app locally.
+## Apps
 
-View your app in AI Studio: https://ai.studio/apps/867f6794-36f4-4bee-a45b-4eccce4d9480
+- `apps/web` - Next.js traveler, provider, and admin web surfaces.
+- `apps/api` - NestJS API gateway and domain modules.
+- `apps/worker` - async event workers for booking, payment, search, and notification flows.
 
-## Run Locally
+## Packages
 
-**Prerequisites:**  Node.js
+- `packages/types` - shared domain types.
+- `packages/constants` - roles, permissions, event topics, route constants.
+- `packages/validators` - shared runtime validation schemas.
+- `packages/api-contracts` - API route contracts.
+- `packages/database` - PostgreSQL schema and seed files.
+- `packages/observability` - logging/analytics contracts.
+- `packages/security` - RBAC and security helper contracts.
 
+## Commands
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm run dev
+npm run dev:api
+npm run dev:worker
+npm run lint
+npm run test:api
+npm run test:e2e
+npm run build
+```
+
+## Local Platform Services
+
+```bash
+docker compose -f infra/docker/docker-compose.yml up
+```
