@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tripetrip-worker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tripetrip-worker
+  template:
+    metadata:
+      labels:
+        app: tripetrip-worker
+    spec:
+      containers:
+        - name: worker
+          image: tripetrip/worker:latest
